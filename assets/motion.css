@@ -1,0 +1,97 @@
+/* BABIN BAU — ruhige, gestaffelte Übergänge, angelehnt an die Bewegungsart von SB RECRUITING.
+   Progressive enhancement: ohne JS und bei reduzierter Bewegung ist alles sofort sichtbar. */
+@media (prefers-reduced-motion: no-preference) {
+  html.babin-motion-ready .scroll-reveal {
+    opacity: 0;
+    transform: translate3d(0, 34px, 0);
+    transition-property: opacity, transform;
+    transition-duration: 1050ms, 1100ms;
+    transition-timing-function: cubic-bezier(.22, 1, .36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+    backface-visibility: hidden;
+  }
+  html.babin-motion-ready .scroll-reveal.reveal-left {
+    transform: translate3d(-32px, 12px, 0);
+  }
+  html.babin-motion-ready .scroll-reveal.reveal-right {
+    transform: translate3d(32px, 12px, 0);
+  }
+  html.babin-motion-ready .scroll-reveal.is-revealed,
+  html.babin-motion-ready .scroll-reveal.reveal-left.is-revealed,
+  html.babin-motion-ready .scroll-reveal.reveal-right.is-revealed {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  /* Der Ablauf erhält einen besonders gelassenen, abgestuften Auftritt. */
+  html.babin-motion-ready .steps > li.scroll-reveal {
+    transition-duration: 1400ms, 1500ms;
+  }
+  /* Karten dürfen nach dem Einblenden weiterhin auf Hover reagieren. */
+  html.babin-motion-ready .service-card.scroll-reveal.is-revealed:hover {
+    transform: translate3d(0, -5px, 0);
+  }
+  /* Der Haupt-Hero wechselt weiterhin alle drei Sekunden.
+     Seine Texte erscheinen innerhalb jeder Folie nacheinander. */
+  @keyframes babin-copy-arrive {
+    from { opacity: 0; transform: translate3d(0, 20px, 0); }
+    to   { opacity: 1; transform: translate3d(0, 0, 0); }
+  }
+  .hero-slide.is-active .hero-copy > .eyebrow,
+  .hero-slide.is-active .hero-copy > .hero-title,
+  .hero-slide.is-active .hero-copy > p,
+  .hero-slide.is-active .hero-copy > .button-row,
+  .hero-slide.is-active .hero-copy > .hero-note {
+    animation: babin-copy-arrive .55s cubic-bezier(.22, 1, .36, 1) both;
+  }
+  .hero-slide.is-active .hero-copy > .eyebrow {animation-delay: .02s; animation-duration: .42s;}
+  .hero-slide.is-active .hero-copy > .hero-title {animation-delay: .09s;}
+  .hero-slide.is-active .hero-copy > p {animation-delay: .16s;}
+  .hero-slide.is-active .hero-copy > .button-row {animation-delay: .24s;}
+  .hero-slide.is-active .hero-copy > .hero-note {animation-delay: .29s;}
+
+  /* Sanfter Einstieg beim Öffnen einer Unterseite. */
+  .page-intro .eyebrow,
+  .page-intro h1,
+  .page-intro .intro-inner > p,
+  .detail-hero .eyebrow,
+  .detail-hero h1,
+  .detail-hero .container > p,
+  .not-found h1,
+  .not-found p {
+    animation: babin-copy-arrive .92s cubic-bezier(.22, 1, .36, 1) both;
+  }
+  .page-intro .eyebrow, .detail-hero .eyebrow {animation-delay: .07s;}
+  .page-intro h1, .detail-hero h1, .not-found h1 {animation-delay: .19s;}
+  .page-intro .intro-inner > p, .detail-hero .container > p, .not-found p {animation-delay: .35s;}
+
+  /* Mobile navigation transitions in styles.css support both opening and closing. */
+
+  .hero-control, .hero-dot span, .btn, .filter-btn, .text-link, .main-nav a,
+  .service-card, .service-card img, .project-card img, .back-to-top {
+    transition-duration: .32s;
+    transition-timing-function: cubic-bezier(.22, 1, .36, 1);
+  }
+  .project-card .project-image img, .service-row-photo img, .story-image img {
+    transition: transform .85s cubic-bezier(.22, 1, .36, 1);
+  }
+  .project-card:hover .project-image img, .service-row-photo:hover img, .story-image:hover img {
+    transform: scale(1.035);
+  }
+}
+/* Bilder und Inhalte bleiben bei Bewegungsreduktion vollständig lesbar. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  .scroll-reveal,
+  .scroll-reveal.is-revealed,
+  .hero-slide .hero-copy > *, .page-intro .eyebrow, .page-intro h1,
+  .page-intro .intro-inner > p, .detail-hero .eyebrow, .detail-hero h1,
+  .detail-hero .container > p, .not-found h1, .not-found p {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+@media print {
+  .scroll-reveal {opacity:1!important;transform:none!important;animation:none!important;}
+}
