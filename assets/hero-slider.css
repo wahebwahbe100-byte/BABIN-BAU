@@ -1,4 +1,4 @@
-/* Homepage only: full-bleed photos and synchronized copy, 3-second rotation. */
+/* Homepage only: full-bleed photos and synchronized copy, 4-second rotation. */
 .hero-carousel{height:clamp(580px,46vw,680px);min-height:580px;isolation:isolate;background:#292d2e}
 .hero-carousel:after{display:none}
 .hero-slides,.hero-slide{position:absolute;inset:0}
@@ -26,9 +26,10 @@
 .hero-counter>span{color:#d4d7db}
 .hero-dots{gap:7px}
 .hero-dot{padding:0;width:38px;height:44px;display:grid;place-items:center;background:transparent}
-.hero-dot span{display:block;width:100%;height:3px;background:#ffffff65;transition:height .2s,background .2s}
-.hero-dot:hover span{background:white}
-.hero-dot[aria-pressed="true"] span{height:4px;background:var(--red)}
+.hero-dot:before{content:"";grid-area:1/1;display:block;width:100%;height:3px;background:#ffffff65;transition:background .2s}
+.hero-dot>span{grid-area:1/1;display:block;width:100%;height:3px;background:transparent;transform-origin:left center;transition:height .2s}
+.hero-dot:hover:before{background:white}
+.hero-dot[aria-pressed="true"]>span{height:4px;background:var(--red)}
 .hero-controls-right{gap:30px}
 .hero-discover{display:flex;align-items:center;gap:13px;text-transform:uppercase;font-size:10px;letter-spacing:1.7px;font-weight:700;color:white}
 .hero-discover .icon{width:18px;height:18px}

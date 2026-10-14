@@ -331,3 +331,45 @@
     transition-delay: 0s !important;
   }
 }
+
+/* Homepage regional notice. */
+.home-service-area{background:var(--off);border-bottom:1px solid var(--line)}
+.home-service-area-inner{display:flex;align-items:center;gap:11px;padding-block:13px}
+.home-service-area .icon{width:19px;height:19px;color:var(--red)}
+.home-service-area p{font-size:13px;line-height:1.55;color:var(--ink)}
+.home-service-area strong{font-weight:700}
+@media(max-width:760px){
+ .home-service-area-inner{align-items:flex-start;gap:9px;padding-block:12px}
+ .home-service-area .icon{width:18px;height:18px;margin-top:1px}
+ .home-service-area p{font-size:12px;line-height:1.6}
+}
+
+/* The coverage column uses the existing footer heading and paragraph styles. */
+@media(min-width:1001px){
+ .footer-grid-with-area{grid-template-columns:1.15fr 1fr .75fr .85fr 1.3fr;gap:32px}
+}
+
+/* Wider service area above the contact banner, matching the reference section. */
+.coverage-section{padding-block:64px;border-top:1px solid var(--line)}
+.coverage-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.coverage-intro,.coverage-copy{min-width:0}
+.coverage-intro .eyebrow{margin-bottom:20px}
+.coverage-intro h2{font-size:clamp(32px,3.5vw,44px);line-height:1.14;letter-spacing:-1.4px}
+.coverage-intro h2 span{color:var(--red)}
+.coverage-copy>p{font-size:16px;line-height:1.85}
+.coverage-copy strong{color:var(--ink);font-weight:700}
+.coverage-countries{display:flex;align-items:center;flex-wrap:wrap;gap:18px 28px;list-style:none;padding:22px 0 0;margin:24px 0 0;border-top:1px solid #d9dce1}
+.coverage-countries li{display:flex;align-items:center;gap:10px;color:var(--ink);font-size:13px;font-weight:700}
+.coverage-country-code{display:grid;place-items:center;width:34px;height:28px;flex-shrink:0;background:var(--white);border:1px solid #d5d8de;border-radius:2px;color:var(--red);font-size:10px;font-weight:400;letter-spacing:.2px}
+@media(max-width:1000px){
+ .coverage-layout{gap:40px}
+}
+@media(max-width:760px){
+ .coverage-section{padding-block:46px}
+ .coverage-layout{grid-template-columns:1fr;gap:26px}
+ .coverage-intro .eyebrow{margin-bottom:16px}
+ .coverage-intro h2{font-size:clamp(30px,7.8vw,36px);letter-spacing:-1px}
+ .coverage-copy>p{font-size:14px;line-height:1.8}
+ .coverage-countries{margin-top:21px;padding-top:20px;gap:16px 24px}
+ .coverage-countries li{font-size:12px}
+}

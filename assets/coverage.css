@@ -1,0 +1,104 @@
+/* Homepage service area: integrated into the existing BABIN BAU design. */
+.hero-carousel .hero-locality {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  max-width: 100%;
+  margin-bottom: 24px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, .3);
+  border-radius: 3px;
+  background: rgba(15, 19, 21, .4);
+  color: #fff;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.hero-carousel .hero-locality .icon {
+  width: 17px;
+  height: 17px;
+}
+.hero-locality strong { font-weight: 700; }
+.hero-carousel .hero-copy > .eyebrow { margin-bottom: 18px; }
+.hero-carousel .hero-content { padding-block: 40px 100px; }
+
+.service-coverage {
+  padding: 64px 0;
+  border-top: 1px solid var(--line);
+  background: var(--off);
+}
+.coverage-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(36px, 6vw, 88px);
+}
+.coverage-heading .eyebrow { margin-bottom: 16px; }
+.coverage-heading h2 {
+  font-size: clamp(30px, 3vw, 40px);
+  line-height: 1.16;
+  letter-spacing: -1.25px;
+}
+.coverage-heading h2 em {
+  color: var(--red);
+  font-style: normal;
+}
+.coverage-copy p {
+  max-width: 530px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.coverage-copy p strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.coverage-countries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid #dedfe2;
+}
+.coverage-country {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+.country-code {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 28px;
+  border: 1px solid #d8dade;
+  border-radius: 2px;
+  background: #fff;
+  color: var(--red);
+  font-size: 10px;
+  letter-spacing: .6px;
+}
+@media (max-width: 760px) {
+  .hero-carousel .hero-content { padding-block: 34px 98px; }
+  .hero-carousel .hero-locality {
+    margin-bottom: 20px;
+    padding: 7px 10px;
+    gap: 8px;
+    font-size: 11px;
+  }
+  .hero-carousel .hero-locality .icon { width: 16px; height: 16px; }
+  .service-coverage { padding: 44px 0; }
+  .coverage-layout { grid-template-columns: 1fr; gap: 23px; }
+  .coverage-heading h2 { font-size: 32px; letter-spacing: -1px; }
+  .coverage-copy p { font-size: 14px; line-height: 1.8; }
+  .coverage-countries { gap: 14px 24px; margin-top: 20px; padding-top: 20px; }
+  .coverage-country { gap: 8px; font-size: 12px; }
+}
+@media (max-width: 360px) {
+  .hero-carousel .hero-locality { padding-inline: 8px; gap: 7px; font-size: 10px; }
+  .coverage-heading h2 { font-size: 29px; }
+  .coverage-countries { gap: 12px 18px; }
+  .country-code { width: 29px; }
+}

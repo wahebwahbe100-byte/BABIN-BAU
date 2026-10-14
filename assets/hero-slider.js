@@ -5,14 +5,15 @@
   const slides = [...root.querySelectorAll('.hero-slide')];
   const dots = [...root.querySelectorAll('[data-slide-to]')];
   if (slides.length < 2) return;
-  // Keep the three homepage slides in sync on a fixed 3-second cycle.
-  const interval = 3000;
+  // The slide timer and progress line share the same 4-second cycle.
+  const interval = Number(root.dataset.interval) || 4000;
   const toggle = root.querySelector('.hero-toggle');
   const currentLabel = root.querySelector('[data-slide-current]');
   const announcement = root.querySelector('.hero-announcement');
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let active = 0;
   let timer = null;
+  let progress = null;
   let paused = motion.matches;
   let keyboardFocused = false;
   let visible = true;
@@ -22,11 +23,20 @@
   function clearTimer() {
     if (timer !== null) window.clearTimeout(timer);
     timer = null;
+    if (progress !== null) progress.cancel();
+    progress = null;
   }
 
   function schedule() {
     clearTimer();
     if (paused || keyboardFocused || touching || !visible || document.hidden) return;
+    const line = dots[active].querySelector('span');
+    if (line && typeof line.animate === 'function' && !motion.matches) {
+      progress = line.animate([
+        { transform: 'scaleX(0)' },
+        { transform: 'scaleX(1)' }
+      ], { duration: interval, easing: 'linear', fill: 'forwards' });
+    }
     timer = window.setTimeout(() => show(active + 1), interval);
   }
 
